@@ -15,10 +15,11 @@ Q_fun <- function(q, n) {
 
 
 
-a <-  10 #автономный спрос
+a <-3 #автономный спрос
 b <-  1 # чувствительность спроса
-c <-  3 # FC
+c <-  1 # FC
 N <- 100 # максимум фирм
+
 k <- 1000 # количество прогонов Монте-Карло
 df <- data.frame()
 set.seed(1)
@@ -62,3 +63,6 @@ for(j in 1:k){
 colnames(df) <- c("n", "Q", "P")
 library(ggplot2)
 qplot(x = n, y = P, data = df)
+ggplot(data = df, aes(x = n)) + geom_density()
+ggplot(data = df, aes(x = P)) + geom_density()
+ggplot(data = df, aes(x = Q)) + geom_density()
